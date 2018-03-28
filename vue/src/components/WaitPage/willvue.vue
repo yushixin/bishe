@@ -26,7 +26,7 @@ export default {
       
       var life = setTimeout(function(){
         _this.$router.push({path:"/login"});
-      },3000);
+      },1000);
     }
   },
   mounted(){

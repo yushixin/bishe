@@ -6,6 +6,8 @@ import login          from '@/components/login'
 import Index          from '@/components/Index'
 import WillDie        from '@/components/WaitPage/WillDie'
 import willvue        from '@/components/WaitPage/willvue'
+import updatapage     from '@/components/updatapage/updatapage'
+
 
 
 
@@ -45,6 +47,11 @@ export default new Router({
       path: '/willvue',
       name: 'willvue',
       component: willvue
+    },
+    {
+      path: '/updatapage',
+      name: 'updatapage',
+      component: updatapage
     }
   ]
 })

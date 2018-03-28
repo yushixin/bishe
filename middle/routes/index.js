@@ -53,5 +53,32 @@ router.get('/showusername',function(req,res,next){
         }
     });
 })
+router.get('/showInformation',function(req,res,next){
+    var uid = req.query.value; 
+    request.get('http://127.0.0.1/bishegogogo/CI/user/showInformation?uid='+uid,function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+})
+router.get('/changeInformation',function(req,res,next){
+    var uid = req.query.uid;
+    var ugender = req.query.gender;
+    var uage = req.query.age;
+    var ucatname = req.query.catname;
+
+    //遇到汉字跨域变值得问题 使用request.post可以避免    
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/user/changeInformation',form:{uid:uid,ugender:ugender,uage:uage,ucatname:ucatname}},function(error,response,body){
+        if (!error && response.statusCode == 200) {
+            // console.log(body);
+            res.json(body);
+        }
+    });
+})
+
+
+
+
 
 module.exports = router;

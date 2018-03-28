@@ -61,4 +61,27 @@ class User extends CI_Controller {
         echo json_encode($result);
 	}
 
+	public function showInformation(){
+        $uid=$this->input->get("uid");
+		$this->load->model('User_model');
+		$result=$this->User_model->show_information($uid);
+        echo json_encode($result);
+	}
+	public function changeInformation(){
+		header('Access-Control-Allow-Origin:*');//允许所有来源访问
+        header('Access-Control-Allow-Method:POST,GET');//允许访问的方式
+        $uid=$this->input->post("uid");
+        $ugender=$this->input->post("ugender");
+        $uage=$this->input->post("uage");
+        $ucatname=$this->input->post("ucatname");
+
+		$this->load->model('User_model');
+		$result=$this->User_model->change_information($uid,$ugender,$uage,$ucatname);
+		echo $result;
+
+
+
+
+	}
+
 }

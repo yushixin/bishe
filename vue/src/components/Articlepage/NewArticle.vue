@@ -1,32 +1,31 @@
 <template>
   <div id="PersonalCenter">
 	<common-header :title="title"></common-header>
-	<personal-next :username="username"></personal-next>
+	<!-- <updata-next></updata-next> -->
 	<common-footer></common-footer>
   </div>
 </template>
 
 <script>
   import Axios from "axios";
-  import jQuery from "../assets/js/jquery-1.12.4.min.js"
-  import CommonHeader from './common/CommonHeader'
-  import CommonFooter from './common/CommonFooter'
-  import PersonalNext from './PersonalNext'
+  import jQuery from "../../assets/js/jquery-1.12.4.min.js"
+  import CommonHeader from '../common/CommonHeader'
+  import CommonFooter from '../common/CommonFooter'
+  import UpdataNext from './UpdataNext'
 
 //youcan_or_yot_youcan_this_is_a_question
 
 		export default {
-		  	name: 'PersonalCenter',
+		  	name: 'updatapage',
 			data () {
 				return {
-			  		title: '个人中心',
-			  		username:''
+					title:'发帖子'
 				}
 			},
 			components:{
     			CommonHeader,
     			CommonFooter,
-    			PersonalNext
+    			UpdataNext
  			},
  			methods:{
 				youcan_or_yot_youcan_this_is_a_question:function(){
@@ -39,7 +38,7 @@
  			},
 			mounted(){
 				this.youcan_or_yot_youcan_this_is_a_question();
-				// this.$store.dispatch('changeTitle',['movie']);
+
 			}
 		}
 </script>

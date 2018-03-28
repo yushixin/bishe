@@ -33,13 +33,25 @@ class User_model extends CI_Model {
       return $query->row();
     }
     
-    public function show_username($uid){//在个人主页显示用户名
+    public function show_information($uid){//在个人主页显示用户名
       $arr = array(
             'u_id'  => $uid
             );
       $query = $this->db->get_where('user', $arr);
       return $query->row();
     }
+    public function change_information($uid,$ugender,$uage,$ucatname){
+      // $arr = array(
+      //               'u_id' =>$uid , 
+      //               'u_gender'=>$ugender,
+      //               'u_age'=>$uage,
+      //               'u_catname'=>$ucatname
+      //             );
+      $data = array('u_gender' => $ugender, 'u_age' => $uage, 'u_catname' => $ucatname);
+      $where = "u_id = $uid";
+      $query = $this->db->update('user', $data, $where);
+      return $query;  
 
+    }
     
 }
