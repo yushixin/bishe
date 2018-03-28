@@ -7,6 +7,7 @@
       <span style="display:block">或密码错误</span>
     </div>
 	</transition>
+
   	<div id="imgDiv">
 	  	<img id="loginImg" src="../assets/img/tupian1.png">	
   	</div>
@@ -115,7 +116,6 @@
 	    /*opacity:0.8;*/
 
 	    border-radius:50px 50px 50px 50px;
-
 
   	}
 

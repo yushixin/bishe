@@ -1,18 +1,17 @@
 <!-- 
-    willvue.vue 20180321
-    这是在PersonalCenter.vue页面中
-    点击注销后短暂停留的界面 
+    WillDie.vue 20180321
+    这个页面出现在 当前页面 sessionstorage不存在的时候 
                                   -->
 <template>
   <div class="willdie">
     <div id="PersonalContent">
-        <span> 您已注销即将返回登录页面 </span>
+        <span> 请您先登陆!!! </span>
     </div>
   </div>
 </template>
 
 <script>
-  import jQuery from "../assets/js/jquery-1.12.4.min.js"
+  import jQuery from "../../assets/js/jquery-1.12.4.min.js"
 
 
 export default {
@@ -39,7 +38,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  @import "../assets/css/reset.css";
+  @import "../../assets/css/reset.css";
 #PersonalContent{
   width: 375px;
   height: 667px; 

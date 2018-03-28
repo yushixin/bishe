@@ -1,7 +1,7 @@
 <template>
   <div id="PersonalCenter">
 	<common-header :title="title"></common-header>
-	<personal-next></personal-next>
+	<personal-next :username="username"></personal-next>
 	<common-footer></common-footer>
   </div>
 </template>
@@ -19,7 +19,8 @@
 		  	name: 'PersonalCenter',
 			data () {
 				return {
-			  		title: '个人中心'
+			  		title: '个人中心',
+			  		username:''
 				}
 			},
 			components:{
@@ -33,7 +34,7 @@
 					if(value == null){
 						this.$router.push({path:"/WillDie"});
 					}else if(value){
-						console.log(value);
+						// console.log(value);
 					}
 				}
  			},

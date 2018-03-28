@@ -1,8 +1,14 @@
 <template id="regcolor">
   <div id="regForm">
-    <div id="remindDiv">
-      <span id="span1" class="displaynone">请输入账号密码</span>
-    </div>
+
+      <div id="remindDiv1"class="displaynone" style= "text-align:center">
+        <span style="display:block">账号已存在</span>
+      </div>
+      <div id="remindDiv2"class="displaynone" style= "text-align:center">
+        <span style="display:block">账号不能为空</span>
+      </div>
+
+
     <div id="contentDiv">
       <img id="regimg" src="../assets/img/tupian1.png">
       <div id="inputDiv">
@@ -33,7 +39,7 @@ export default {
     methods:{
       reg:function(){
         if(this.username){
-          $("#span1").addClass("displaynone");
+          $("#remindDiv2").addClass("displaynone");
 
           var _this=this;
           Axios.get("http://localhost:3000/reg",{
@@ -43,12 +49,16 @@ export default {
             }
           }).then(function (res) {
               var reg_flag = res.data;
+              // console.log(reg_flag);
               if(reg_flag == 1){
                 _this.$router.push({path:"/login"});
+              }else if(reg_flag == 7777){
+                $("#remindDiv1").removeClass("displaynone");
+
               }
           });
         }else{
-          $("#span1").removeClass("displaynone");
+              $("#remindDiv2").removeClass("displaynone");
         }
 
       },
@@ -121,6 +131,36 @@ export default {
     background: red;
     float: left;
   }
+    #remindDiv1{
+      position: absolute;
+      top: 0;
+      left: 37px;
+
+      width: 80%;
+      height: 2rem;
+      background: #b8f1ed;
+      z-index: 99;
+      font-size: 0.7rem;
+      /*opacity:0.8;*/
+
+      border-radius:50px 50px 50px 50px;
+
+    }
+    #remindDiv2{
+      position: absolute;
+      top: 0;
+      left: 37px;
+
+      width: 80%;
+      height: 2rem;
+      background: #b8f1ed;
+      z-index: 99;
+      font-size: 0.7rem;
+      /*opacity:0.8;*/
+
+      border-radius:50px 50px 50px 50px;
+
+    }
   /*接下来的css样式用来写提醒的隐藏与显示*/
   .displaynone{
     display: none;

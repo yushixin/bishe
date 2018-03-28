@@ -4,8 +4,8 @@ import reg            from '@/components/reg'
 import PersonalCenter from '@/components/PersonalCenter'
 import login          from '@/components/login'
 import Index          from '@/components/Index'
-import WillDie        from '@/components/WillDie'
-import willvue        from '@/components/willvue'
+import WillDie        from '@/components/WaitPage/WillDie'
+import willvue        from '@/components/WaitPage/willvue'
 
 
 

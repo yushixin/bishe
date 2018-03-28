@@ -19,11 +19,24 @@ class User extends CI_Controller {
 		$username=$this->input->get("username");
         $password=$this->input->get("password");
 		$this->load->model('User_model');
-		$result=$this->User_model->add_user($username,$password);
-		$flag = 1;
-		if($result == true){
-			echo $flag;
+		$result=$this->User_model->select_user($username);
+		// echo $result;
+		$flag1 = 7777;
+		if($result == 1){
+			echo $flag1;
+		}else if($result == 0){
+			$result=$this->User_model->add_user($username,$password);
+			$flag2 = 1;
+			if($result == true){
+				echo $flag2;
+			}
 		}
+
+		// $result=$this->User_model->add_user($username,$password);
+		// $flag = 1;
+		// if($result == true){
+		// 	echo $flag;
+		// }
 	}
 	public function usernameTesting(){
 		$username=$this->input->get("username");
@@ -38,6 +51,13 @@ class User extends CI_Controller {
 		$this->load->model('User_model');
 		$result=$this->User_model->login_test($username,$password);
 		// var_dump($result);
+        echo json_encode($result);
+	}
+
+	public function showUsername(){
+        $uid=$this->input->get("uid");
+		$this->load->model('User_model');
+		$result=$this->User_model->show_username($uid);
         echo json_encode($result);
 	}
 
