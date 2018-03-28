@@ -67,12 +67,16 @@ export default {
       position: fixed;
       top: 1rem;
       position: relative;
+    /*height: 549px;*/
+
     }
     .PersonalContent{
       position: absolute;
       top: 0;
       width: 100%;
-      height: 10rem;
+      height: 549px;
+    background: #b8f1ed;
+
     }
     .HeadPortrait{
       position: absolute;
@@ -84,7 +88,7 @@ export default {
     }
     .Data{
       position: absolute;
-      top:0;
+      top:30px;
       left: 150px;
       width: 225px;
       height: 150px;

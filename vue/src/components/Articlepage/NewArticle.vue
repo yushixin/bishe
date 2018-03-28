@@ -1,7 +1,7 @@
 <template>
   <div id="PersonalCenter">
 	<common-header :title="title"></common-header>
-	<!-- <updata-next></updata-next> -->
+	<new-article-next></new-article-next>
 	<common-footer></common-footer>
   </div>
 </template>
@@ -11,12 +11,12 @@
   import jQuery from "../../assets/js/jquery-1.12.4.min.js"
   import CommonHeader from '../common/CommonHeader'
   import CommonFooter from '../common/CommonFooter'
-  import UpdataNext from './UpdataNext'
+  import NewArticleNext from './NewArticleNext'
 
 //youcan_or_yot_youcan_this_is_a_question
 
 		export default {
-		  	name: 'updatapage',
+		  	name: 'NewArticle',
 			data () {
 				return {
 					title:'发帖子'
@@ -25,7 +25,7 @@
 			components:{
     			CommonHeader,
     			CommonFooter,
-    			UpdataNext
+    			NewArticleNext
  			},
  			methods:{
 				youcan_or_yot_youcan_this_is_a_question:function(){

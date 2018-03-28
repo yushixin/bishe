@@ -7,6 +7,8 @@ import Index          from '@/components/Index'
 import WillDie        from '@/components/WaitPage/WillDie'
 import willvue        from '@/components/WaitPage/willvue'
 import updatapage     from '@/components/updatapage/updatapage'
+import NewArticle     from '@/components/Articlepage/NewArticle'
+
 
 
 
@@ -52,6 +54,11 @@ export default new Router({
       path: '/updatapage',
       name: 'updatapage',
       component: updatapage
+    },
+    {
+      path: '/NewArticle',
+      name: 'NewArticle',
+      component: NewArticle
     }
   ]
 })

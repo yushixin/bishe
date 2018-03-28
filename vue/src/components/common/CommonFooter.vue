@@ -2,7 +2,7 @@
   <div class="footer">
     <ul class="commonfooter">
       <li><router-link to="/index">首页</router-link></li>
-      <li id="fatie"><router-link to="/trend">+</router-link></li>
+      <li id="fatie"><router-link to="/NewArticle">+</router-link></li>
       <li><router-link to="/PersonalCenter">个人中心</router-link></li>
     </ul>
   </div>
@@ -31,7 +31,7 @@ export default {
     position: fixed;
     bottom:0;
     width: 100%;
-    background: #edbf2b;
+    background: #b8f1cc;
   }
   .commonfooter{
     display: flex;
@@ -45,7 +45,7 @@ export default {
     text-align: center;
   }
   .commonfooter a{
-    color: #FFF;
+    color: #f55066;
     outline: none;
   }
 </style>
