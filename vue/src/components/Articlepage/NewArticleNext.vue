@@ -1,9 +1,9 @@
 <template>
   <div class="NewArticleNext">
 		<div>标题：</div>
-		<div><input class="biaoti" type="text" placeholder="请输入标题"></div>
+		<div><input class="biaoti" type="text" placeholder="请输入标题" v-model="articletitle"></div>
 		<div>正文：</div>
-		<div id="textarea-div"><textarea name="" id="" placeholder="请输入正文"></textarea></div>
+		<div id="textarea-div"><textarea name="" id="" placeholder="请输入正文" v-model="articletext"></textarea></div>
 		<div id="send-out" @click="sendOut">发送</div>
 
   </div>
@@ -15,15 +15,23 @@
 export default {
   data() {
     return {
-
+    	articletitle: '',
+		articletext:''
     }
   },
   methods:{
   	sendOut:function(){
-  		var title = $('.biaoti').val();
-  		var article = $('textarea').val();
-  		console.log(title);
-  		console.log(article);
+		var uid = sessionStorage.getItem("u_id");
+		console.log(uid);
+		Axios.get("http://localhost:3000/sendout",{
+			params:{
+				articletitle:this.articletitle,
+				articletext:this.articletext,
+				uid:uid
+			}
+		}).then((res)=>{
+
+		});
   	}
       
   },

@@ -24,17 +24,10 @@
     			CommonFooter
  			},
  			methods:{
-				// youcan_or_yot_youcan_this_is_a_question:function(){
-				// 	var value = sessionStorage.getItem("u_id");
-				// 	if(value){
-				// 		// console.log(value);
-				// 	}else{
-				// 		this.$router.push({path:"/WillDie"});	
-				// 	}
-				// }
+
  			},
 			mounted(){
-				// this.youcan_or_yot_youcan_this_is_a_question();
+
 			}
 		}
 </script>

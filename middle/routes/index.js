@@ -33,8 +33,8 @@ router.get('/usernameTesting',function(req,res,next){
 router.get('/logintest',function(req,res,next){
     var username = req.query.username;
     var password = req.query.password;
-    // console.log(username);
-    // console.log(password);
+    console.log(username);
+    console.log(password);
     request.get('http://127.0.0.1/bishegogogo/CI/user/loginTest?username='+username+"&password="+password,function(error, response, body){
         if (!error && response.statusCode == 200) {
             // console.log(body);
@@ -77,7 +77,22 @@ router.get('/changeInformation',function(req,res,next){
     });
 })
 
+router.get('/sendout',function(req,res,next){
+    var articletitle = req.query.articletitle;
+    var articletext = req.query.articletext;
+    var uid = req.query.uid;
 
+    console.log(articletitle);
+    console.log(articletext);
+    console.log(uid);
+
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/article/sendOut',form:{articletitle:articletitle,articletext:articletext,uid:uid}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            // console.log(body);
+            res.json(body);
+        }
+    });
+})
 
 
 

@@ -10,8 +10,19 @@ header("Access-Control-Allow-Headers:x-requested-with,content-type");
 // header('Access-Control-Max-Age:86400'); // 允许访问的有效期
 header('Access-Control-Allow-Credentials:true');
 // session_start(); 
-class Artivle extends CI_Controller {
+class Article extends CI_Controller {
 
+	public function sendOut(){
+		header('Access-Control-Allow-Origin:*');//允许所有来源访问
+        header('Access-Control-Allow-Method:POST,GET');//允许访问的方式
+        $articletitle=$this->input->post("articletitle");
+        $articletext=$this->input->post("articletext");
+        $uid=$this->input->post("uid");
+		$this->load->model('Article_model');
+		//--------------------------------------------  ↓ 参数顺序会影响结果
+		$result=$this->Article_model->send_out($articletitle,$articletext,$uid);
+		echo $result;
+	}
 
 
 	

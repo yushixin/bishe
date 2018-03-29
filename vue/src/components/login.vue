@@ -46,7 +46,9 @@
 							password:this.password
 						}
 					}).then(function (res) {
+
 						var token = JSON.parse(res.data);
+						console.log(token);
 						if(token == null){
 							$("#remindDiv").removeClass("displaynone");
 						}else{

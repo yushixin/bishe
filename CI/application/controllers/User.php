@@ -74,14 +74,12 @@ class User extends CI_Controller {
         $ugender=$this->input->post("ugender");
         $uage=$this->input->post("uage");
         $ucatname=$this->input->post("ucatname");
-
 		$this->load->model('User_model');
 		$result=$this->User_model->change_information($uid,$ugender,$uage,$ucatname);
 		echo $result;
-
-
-
-
+	}
+	public function test(){
+		echo "这是user里的test";
 	}
 
 }
