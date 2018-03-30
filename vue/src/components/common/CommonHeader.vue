@@ -30,6 +30,7 @@ export default {
     background:#b8f1cc;
     color: #f55066;
     height: 1rem;
+    z-index:1;
   }
     .header h2{
     flex: 1;

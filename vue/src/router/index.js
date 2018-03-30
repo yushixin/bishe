@@ -4,13 +4,13 @@ import reg            from '@/components/reg'
 import PersonalCenter from '@/components/PersonalCenter'
 import login          from '@/components/login'
 import Index          from '@/components/Index'
+// import IndexNext      from '@/components/IndexNext'
+
 import WillDie        from '@/components/WaitPage/WillDie'
 import willvue        from '@/components/WaitPage/willvue'
 import updatapage     from '@/components/updatapage/updatapage'
 import NewArticle     from '@/components/Articlepage/NewArticle'
-
-
-
+import ArticleDetails from '@/components/Articlepage/ArticleDetails'
 
 
 Vue.use(Router)
@@ -59,6 +59,11 @@ export default new Router({
       path: '/NewArticle',
       name: 'NewArticle',
       component: NewArticle
+    },
+    {
+      path: '/ArticleDetails/:id',
+      name: 'ArticleDetails',
+      component: ArticleDetails
     }
   ]
 })

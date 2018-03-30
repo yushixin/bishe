@@ -21,17 +21,18 @@ export default {
   },
   methods:{
   	sendOut:function(){
-		var uid = sessionStorage.getItem("u_id");
-		console.log(uid);
-		Axios.get("http://localhost:3000/sendout",{
-			params:{
-				articletitle:this.articletitle,
-				articletext:this.articletext,
-				uid:uid
-			}
-		}).then((res)=>{
+  		var uid = sessionStorage.getItem("u_id");
+  		Axios.get("http://localhost:3000/sendout",{
+  			params:{
+  				articletitle:this.articletitle,
+  				articletext:this.articletext,
+  				uid:uid
+  			}
+  		}).then((res)=>{
 
-		});
+  		});
+    this.$router.push({path:"/index"});
+
   	}
       
   },

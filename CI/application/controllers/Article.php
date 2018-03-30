@@ -23,7 +23,18 @@ class Article extends CI_Controller {
 		$result=$this->Article_model->send_out($articletitle,$articletext,$uid);
 		echo $result;
 	}
-
-
+	public function showcontainer(){
+		$this->load->model('Article_model');
+		$result = $this->Article_model->show_container();
+		echo json_encode($result);
+		// var_dump(json_encode($result));
+		// echo $result;
+	}
+	public function showArticleDetails(){
+		$aid = $this->input->get("aid");
+		$this->load->model('Article_model');
+		$result = $this->Article_model->show_ArticleDetails($aid);
+		echo json_encode($result);
+	}
 	
 }

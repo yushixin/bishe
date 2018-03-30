@@ -1,6 +1,7 @@
 <template>
   <div id="index">
 	<common-header :title="title"></common-header>
+	<index-next></index-next>
 	<common-footer></common-footer>
   </div>
 </template>
@@ -10,6 +11,7 @@
   import jQuery from "../assets/js/jquery-1.12.4.min.js"
   import CommonHeader from './common/CommonHeader'
   import CommonFooter from './common/CommonFooter'
+  import IndexNext from './IndexNext'
 
 
 		export default {
@@ -21,7 +23,8 @@
 			},
 			components:{
     			CommonHeader,
-    			CommonFooter
+    			CommonFooter,
+    			IndexNext
  			},
  			methods:{
 

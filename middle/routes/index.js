@@ -94,6 +94,21 @@ router.get('/sendout',function(req,res,next){
     });
 })
 
+router.get('/showcontainer',function(req,res,next){
+    request.get('http://127.0.0.1/bishegogogo/CI/article/showcontainer',function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            res.json(body);
+        }
+    });
+})
 
+router.get('/showArticleDetails',function(req,res,next){
+    var aid = req.query.aid;
+    request.get('http://127.0.0.1/bishegogogo/CI/article/showArticleDetails?aid='+aid,function(error,response,body){
+        console.log(body);
+        res.json(body);
+    })
+})
 
 module.exports = router;
