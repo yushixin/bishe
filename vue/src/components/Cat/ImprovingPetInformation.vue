@@ -2,7 +2,8 @@
   <div id="ImprovingPetInformation">
 	<common-header :title="title"></common-header>
 		<div class="content">
-			
+			<input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+
 		</div>
 	<common-footer></common-footer>
   </div>
