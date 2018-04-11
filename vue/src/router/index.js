@@ -11,6 +11,8 @@ import willvue        from '@/components/WaitPage/willvue'
 import updatapage     from '@/components/updatapage/updatapage'
 import NewArticle     from '@/components/Articlepage/NewArticle'
 import ArticleDetails from '@/components/Articlepage/ArticleDetails'
+import ImprovingPetInformation from '@/components/Cat/ImprovingPetInformation'
+
 
 
 Vue.use(Router)
@@ -64,6 +66,12 @@ export default new Router({
       path: '/ArticleDetails/:id',
       name: 'ArticleDetails',
       component: ArticleDetails
+    },
+    {
+      path: '/IPetI',
+      name: 'ImprovingPetInformation',
+      component: ImprovingPetInformation
     }
+    
   ]
 })

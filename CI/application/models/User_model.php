@@ -54,4 +54,18 @@ class User_model extends CI_Model {
 
     }
     
+    public function have_Cat_OR_not($catmaster){
+      // $arr = array(
+      //               'u_id' =>$uid , 
+      //               'u_gender'=>$ugender,
+      //               'u_age'=>$uage,
+      //               'u_catname'=>$ucatname
+      //             );
+      $arr = array(
+            'cat_master'  => $catmaster
+            );
+      $query = $this->db->get_where('cat', $arr);
+      return $query->row();
+
+    }
 }

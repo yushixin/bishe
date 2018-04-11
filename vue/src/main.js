@@ -6,6 +6,8 @@ import router		from './router'
 import store		from './vuex/store'
 import ElementUI 	from 'element-ui';//引入ElementUI
 import 'element-ui/lib/theme-chalk/index.css';//引入ElementUI
+	
+import $ from 'jquery'
 
 
 Vue.use(ElementUI);

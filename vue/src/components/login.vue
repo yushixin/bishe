@@ -25,7 +25,7 @@
 
 <script>
   import Axios from "axios";
-  import jQuery from "../assets/js/jquery-1.12.4.min.js"
+  // import jQuery from "../assets/js/jquery-1.12.4.min.js"
 
 		export default {
 			name: 'login',

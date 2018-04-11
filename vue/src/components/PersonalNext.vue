@@ -3,21 +3,27 @@
 
     <div class="PersonalContent"><!-- 个人中心内容div-->
         <div class="PersonalData">    <!-- PersonalData 个人资料 -->
-          <div class="HeadPortrait">  <!-- headportrait 头像 -->
-            <!-- <img :src="data.u_img"> -->
-          </div>
-          <div class="Data">
-            <div class="data-div1">
-                <div class="username-div1">用户名：</div>
-                <div class="username-div2">{{data.u_name}}</div>
+            <div class="HeadPortrait">  <!-- headportrait 头像 -->
+              <!-- <img :src="data.u_img"> -->
             </div>
-            <div class="data-div2">
-                <div class="zhuxiaoDiv" @click="godie">注销</div>
-                <div class="update" @click="updatafun">修改资料</div>
-
-
+            <div class="Data">
+                <div class="data-div1">
+                    <div class="username-div1">用户名：</div>
+                    <div class="username-div2">{{data.u_name}}</div>
+                </div>
+                <div class="data-div2">
+                    <div class="zhuxiaoDiv" @click="godie">注销</div>
+                    <div class="update" @click="updatafun">修改资料</div>
+                </div>
             </div>
-          </div>
+            <div style="height:150px"></div><!-- 空div 用来撑起PersonalData -->
+        </div>
+        <div class="cat-data">
+            <div class="no-cat">
+              您还没有完善宠物信息<div class="now-add" @click="toIPetI">立即添加</div>
+            </div>
+            <hr>
+  
         </div>
 
     </div>
@@ -41,20 +47,39 @@ export default {
     },
     updatafun:function(){
         this.$router.push({path:"/updatapage"});
+    },
+    toIPetI:function(){
+        this.$router.push({path:"/IPetI"});
+
     }
   },
   mounted() {
     var value = sessionStorage.getItem("u_id");
-    Axios.get('http://localhost:3000/showInformation',{
+    var _this = this;
+    // 这个Axios用来输出用户信息
+    Axios.get('http://localhost:3000/showInformation',{//showInformation 输出信息
       params:{
         value:value
       }
     }).then((res)=>{
       var value2=JSON.parse(res.data);
-      // console.log(value2);
-      this.data = value2;
+      console.log(value2);
+      _this.data = value2;
     });
-    
+    // 这个Axios用来输出宠物信息
+    Axios.get('http://localhost:3000/haveCatORnot',{//haveCatORnot 是否有宠物 
+      params:{
+        value:value
+      }
+    }).then((res)=>{
+      var value3=JSON.parse(res.data);
+      if(value3){
+        console.log(value3);
+      }else if(value3 == null){
+        console.log("b");
+      }
+      // this.data = value2;
+    });
   }
 }
 </script>
@@ -67,8 +92,13 @@ export default {
       position: fixed;
       top: 1rem;
       position: relative;
-    /*height: 549px;*/
-
+    }
+    .PersonalData{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
     }
     .PersonalContent{
       position: absolute;
@@ -76,8 +106,8 @@ export default {
       width: 100%;
       height: 549px;
     background: #b8f1ed;
-
     }
+
     .HeadPortrait{
       position: absolute;
       top: 0;
@@ -91,7 +121,7 @@ export default {
       top:30px;
       left: 150px;
       width: 225px;
-      height: 150px;
+      height: 120px;
     }
     .data-div1{
       position: absolute;
@@ -148,6 +178,7 @@ export default {
       border-right-style: solid;
       border-width: 1px;
       border-color: block;
+      z-index: 99;
     }
     .update{
       position: absolute;
@@ -159,6 +190,30 @@ export default {
       height: 1rem;
       text-align: center;
       line-height:1rem;
+      z-index: 99;
     }
+    
 
+    /*下面是cat-data 部分css样式*/
+    .cat-data{
+      position: absolute;
+      top: 160px;
+      left: 0;
+      /*background: red;*/
+      width: 100%;
+      /*height: 10px;*/
+      text-align: center;
+    }
+    .no-cat{
+      width: 100%;
+      height: 1rem;
+      font-size: 0.4rem;
+      line-height: 1rem;
+    }
+    .now-add{
+      display: inline;
+      border-style: solid;
+      border-width: 1px;
+      border-color: block;
+    }
 </style>

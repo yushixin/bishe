@@ -81,5 +81,10 @@ class User extends CI_Controller {
 	public function test(){
 		echo "这是user里的test";
 	}
-
+	public function haveCatORnot(){
+        $catmaster=$this->input->get("catmaster");
+		$this->load->model('User_model');
+		$result=$this->User_model->have_Cat_OR_not($catmaster);
+        echo json_encode($result);
+	}
 }
