@@ -12,7 +12,6 @@
 
 <script>
   import Axios from "axios";
-  import jQuery from "../assets/js/jquery-1.12.4.min.js"
 export default {
   data() {
     return {
@@ -64,10 +63,12 @@ export default {
     border-bottom-style: solid;
     border-width: 3px;
     border-color: block; 
+    text-align: center;
+    margin: 0 auto;
   }
   .title-div h3{
     float: left;
-    /*width: 100%*/
+    font-size: 0.5rem;
   }
   .title-div div{
     float: left;
