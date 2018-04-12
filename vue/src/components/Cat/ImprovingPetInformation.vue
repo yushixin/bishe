@@ -1,9 +1,31 @@
 <template>
   <div id="ImprovingPetInformation">
 	<common-header :title="title"></common-header>
-		<div class="content">
-			<input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+		<div class="cat-content">
+			<div class="cat-name">
+				<div>名字</div>
+				<div>
+					<input type="text" class="form-control" id="form-control2"placeholder="请输入patname" aria-describedby="basic-addon1">
+				</div>
+			</div>
+			<hr>
+			<div class="cat-varieties">
+				<div>物种</div>
+				<div>
+					<select>
+						<option value ="">请选择</option>
+						<option value ="猫猫">cat</option>
+						<option value="狗狗">dog</option>
+						<option value="鱼鱼">fish</option>
+					</select>
+				</div>
 
+			</div>
+			<div class="buttonn">
+				<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+			<div class="aaa"></div>
+			</div>
+			<div class="aaa"></div>
 		</div>
 	<common-footer></common-footer>
   </div>
@@ -40,12 +62,84 @@
 
 <style scoped>
   @import "../../assets/css/reset.css";
+  	.aaa{
+  		height: 600px;
+  		z-index: -99;
+  	}
   	.ImprovingPetInformation{
   		position: relative;
   	}
-	.content{
+	.cat-content{
 		position: absolute;
 		top: 1rem;
 		width: 100%;
+	}
+	.cat-name{
+		position: absolute;
+		top: 10px;
+		width: 100%;
+		height: 1rem;
+		font-size: 0.7rem;
+
+	}
+	.cat-name div:nth-child(1) {
+		/*float: left;*/
+		position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100px;
+	}
+	.cat-name div:nth-child(2) {
+		/*float: right;*/
+		width: 70%;
+		position: absolute;
+        top: 50%;
+        left: 100px;
+        transform: translateY(-50%);
+	}
+
+
+	.cat-varieties{
+		position: absolute;
+		top: 80px;
+		width: 100%;
+		height: 1rem;
+		font-size: 0.7rem;
+
+	}
+	.cat-varieties select{
+		width: 100%;
+		height: 100%;
+		font-size: 0.7rem;
+	}
+	#form-control2{
+		height: 100%;
+	}
+	.cat-varieties div:nth-child(1) {
+		/*float: left;*/
+		position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100px;
+	}
+	.cat-varieties div:nth-child(2) {
+		/*float: right;*/
+		width: 70%;
+		position: absolute;
+        top: 50%;
+        left: 100px;
+        transform: translateY(-50%);
+	}
+	.buttonn{
+		width: 100%;
+		height: 1rem;
+		position: absolute;
+		top: 3rem;
+	}
+	.buttonn a{
+		width: 100%;
+		height: 100%;
 	}
 </style>
