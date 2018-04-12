@@ -68,7 +68,7 @@ export default {
   }
   .title-div h3{
     float: left;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
   }
   .title-div div{
     float: left;
