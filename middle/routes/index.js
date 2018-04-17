@@ -112,5 +112,19 @@ router.get('/haveCatORnot',function(req,res,next){
         res.json(body);
     })
 })
+router.get('/CreatePetInf',function(req,res,next){
+    var catName = req.query.catName;
+    var varieties = req.query.varieties;
+    var uid = req.query.uid;
+    var catAge = req.query.catAge;
 
+    console.log("***");
+    console.log(catName);
+    console.log(varieties);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/Cat/CreatePetInf',form:{catName:catName,varieties:varieties,uid:uid,catAge:catAge}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            res.json(body);
+        }
+    });
+})
 module.exports = router;

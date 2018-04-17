@@ -13,6 +13,9 @@ import NewArticle     from '@/components/Articlepage/NewArticle'
 import ArticleDetails from '@/components/Articlepage/ArticleDetails'
 import ImprovingPetInformation from '@/components/Cat/ImprovingPetInformation'
 
+import imgup          from '@/components/imgup'
+
+
 
 
 Vue.use(Router)
@@ -71,6 +74,11 @@ export default new Router({
       path: '/IPetI',
       name: 'ImprovingPetInformation',
       component: ImprovingPetInformation
+    },
+    {
+      path: '/imgup',
+      name: 'imgup',
+      component: imgup
     }
     
   ]

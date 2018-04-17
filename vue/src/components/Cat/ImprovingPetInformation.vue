@@ -5,14 +5,19 @@
 			<div class="cat-name">
 				<div>名字</div>
 				<div>
-					<input type="text" class="form-control" id="form-control2"placeholder="请输入patname" aria-describedby="basic-addon1">
+					<input type="text" class="form-control" id="form-control1"placeholder="请输入patname" aria-describedby="basic-addon1">
 				</div>
 			</div>
-			<hr>
+			<div class="cat-age">
+				<div>年龄</div>
+				<div>
+					<input type="text" class="form-control" id="form-control2"placeholder="请输入age" aria-describedby="basic-addon1">
+				</div>
+			</div>
 			<div class="cat-varieties">
 				<div>物种</div>
 				<div>
-					<select>
+					<select id="select1">
 						<option value ="">请选择</option>
 						<option value ="猫猫">cat</option>
 						<option value="狗狗">dog</option>
@@ -21,10 +26,8 @@
 				</div>
 
 			</div>
-			<div class="buttonn">
-				<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-			<div class="aaa"></div>
-			</div>
+			<div class="button" @click="qrclick">确认</div>
+			<!-- 用来撑起cat-content -->
 			<div class="aaa"></div>
 		</div>
 	<common-footer></common-footer>
@@ -51,6 +54,26 @@
  
  			},
  			methods:{
+ 				qrclick:function(){
+					var catName = $("#form-control1").val();
+
+					var catAge = $("#form-control2").val();
+					var varieties = $("#select1").val();
+    				var uid = sessionStorage.getItem("u_id");
+
+					Axios.get("http://localhost:3000/CreatePetInf",{
+						params:{
+							catName:catName,
+							varieties:varieties,
+							uid:uid,
+							catAge:catAge
+						}
+					}).then((res)=>{
+
+					});
+        			this.$router.push({path:"/PersonalCenter"});
+
+ 				}
 
  			},
 			mounted(){
@@ -132,6 +155,30 @@
         left: 100px;
         transform: translateY(-50%);
 	}
+	.cat-age{
+		position: absolute;
+		top: 2.5rem;
+		width: 100%;
+		height: 1rem;
+		font-size: 0.7rem;
+
+	}
+	.cat-age div:nth-child(1) {
+		/*float: left;*/
+		position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100px;
+	}
+	.cat-age div:nth-child(2) {
+		/*float: right;*/
+		width: 70%;
+		position: absolute;
+        top: 50%;
+        left: 100px;
+        transform: translateY(-50%);
+	}
 	.buttonn{
 		width: 100%;
 		height: 1rem;
@@ -141,5 +188,15 @@
 	.buttonn a{
 		width: 100%;
 		height: 100%;
+	}
+	.button{
+		position: absolute;
+		bottom: 1rem;
+		width: 100%;
+		height: 1rem;
+		background: #ffe543;
+		font-size: 0.8rem;
+		line-height: 1rem;
+		text-align: center;
 	}
 </style>
