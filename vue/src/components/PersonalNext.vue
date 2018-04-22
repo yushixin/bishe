@@ -3,8 +3,8 @@
 
     <div class="PersonalContent"><!-- 个人中心内容div-->
         <div class="PersonalData">    <!-- PersonalData 个人资料 -->
-            <div class="HeadPortrait">  <!-- headportrait 头像 -->
-              <!-- <img :src="data.u_img"> -->
+            <div class="HeadPortrait" @click="tochangeHeadimg">  <!-- headportrait 头像 -->
+              <img :src="src">
             </div>
             <div class="Data">
                 <div class="data-div1">
@@ -35,52 +35,62 @@
   import Axios from "axios";
   import jQuery from "../assets/js/jquery-1.12.4.min.js"
 export default {
-  data() {
-    return {
-      data:[]
-    }
-  },
-  methods:{
-    godie:function(){
-        sessionStorage.removeItem('u_id');
-        this.$router.push({path:"/willvue"});
+    data() {
+      return {
+        data:[],
+        src:''
+      }
     },
-    updatafun:function(){
-        this.$router.push({path:"/updatapage"});
-    },
-    toIPetI:function(){
-        this.$router.push({path:"/IPetI"});
+    methods:{
+      godie:function(){
+          sessionStorage.removeItem('u_id');
+          this.$router.push({path:"/willvue"});
+      },
+      updatafun:function(){
+          this.$router.push({path:"/updatapage"});
+      },
+      toIPetI:function(){
+          this.$router.push({path:"/IPetI"});//跳转到修改宠物信息
+      },
+      tochangeHeadimg:function(){
+          this.$router.push({path:"/changeHeadimg"});
 
+      }
+    },
+    mounted() {
+        var value = sessionStorage.getItem("u_id");
+        var _this = this;
+        // 这个Axios用来输出用户信息
+        Axios.get('http://localhost:3000/showInformation',{//showInformation 输出信息
+          params:{
+            value:value
+          }
+        }).then((res)=>{
+          var value2=JSON.parse(res.data);
+          console.log(value2);
+          _this.data = value2;
+          console.log(_this.data.u_img);
+          if(_this.data.u_img){
+            _this.src = 'http://127.0.0.1/img/TX/' + _this.data.u_img;
+          }else if(_this.data.u_img == null){
+            _this.src = 'http://127.0.0.1/img/TX/mrxianshi.jpg'
+          }
+        });
+        // 这个Axios用来输出宠物信息
+        Axios.get('http://localhost:3000/haveCatORnot',{//haveCatORnot 是否有宠物 
+          params:{
+            value:value
+          }
+        }).then((res)=>{
+          var value3=JSON.parse(res.data);
+          if(value3){
+            console.log(value3);
+          }else if(value3 == null){
+            console.log("b");
+          }
+          // this.data = value2;
+        });
     }
-  },
-  mounted() {
-    var value = sessionStorage.getItem("u_id");
-    var _this = this;
-    // 这个Axios用来输出用户信息
-    Axios.get('http://localhost:3000/showInformation',{//showInformation 输出信息
-      params:{
-        value:value
-      }
-    }).then((res)=>{
-      var value2=JSON.parse(res.data);
-      console.log(value2);
-      _this.data = value2;
-    });
-    // 这个Axios用来输出宠物信息
-    Axios.get('http://localhost:3000/haveCatORnot',{//haveCatORnot 是否有宠物 
-      params:{
-        value:value
-      }
-    }).then((res)=>{
-      var value3=JSON.parse(res.data);
-      if(value3){
-        console.log(value3);
-      }else if(value3 == null){
-        console.log("b");
-      }
-      // this.data = value2;
-    });
-  }
 }
 </script>
 
@@ -115,6 +125,10 @@ export default {
       background: green;
       width: 150px;
       height: 150px;
+    }
+    .HeadPortrait img{
+      width: 100%;
+      height: 100%;
     }
     .Data{
       position: absolute;

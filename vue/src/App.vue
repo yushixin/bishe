@@ -13,5 +13,7 @@ export default {
 <style>
 	#app{
 		/*background: #e27386;*/
-	}
+/*		width: 375px;
+		height: 667px;
+*/	}
 </style>

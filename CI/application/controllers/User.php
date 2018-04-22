@@ -87,4 +87,22 @@ class User extends CI_Controller {
 		$result=$this->User_model->have_Cat_OR_not($catmaster);
         echo json_encode($result);
 	}
+	public function changeHeadimg(){
+		$uid = isset($_POST['uid'])? $_POST['uid'] : '';
+		$localurl = '../../img/TX/';
+		$filename = time().substr($_FILES['photo']['name'], strrpos($_FILES['photo']['name'],'.'));
+		$imgurl = $localurl.$filename;
+
+		$this->load->model('User_model');
+		$result=$this->User_model->update_headimg($uid,$filename);
+
+		$response = array();
+		if(move_uploaded_file($_FILES['photo']['tmp_name'], $imgurl)){
+			$response['isSuccess'] = true;
+			$response['photo'] = $filename;
+		}else{  
+			$response['isSuccess'] = false;  
+		}  
+		echo json_encode($response);
+	}
 }

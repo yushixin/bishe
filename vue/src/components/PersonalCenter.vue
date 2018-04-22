@@ -8,7 +8,6 @@
 
 <script>
   import Axios from "axios";
-  import jQuery from "../assets/js/jquery-1.12.4.min.js"
   import CommonHeader from './common/CommonHeader'
   import CommonFooter from './common/CommonFooter'
   import PersonalNext from './PersonalNext'
@@ -30,10 +29,11 @@
  			},
  			methods:{
 				youcan_or_yot_youcan_this_is_a_question:function(){
-					var value = sessionStorage.getItem("u_id");
-					if(value == null){
+					var nowUserid = sessionStorage.getItem("u_id");//在页面加载的时候获取当前有效sessionsStotage
+					if(nowUserid){
+						console.log("当前是用户"+ nowUserid +"修改头像页面");
+					}else if(nowUserid == null){
 						this.$router.push({path:"/WillDie"});
-					}else if(value){
 					}
 				}
  			},

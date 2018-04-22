@@ -68,4 +68,8 @@ class User_model extends CI_Model {
       return $query->row();
 
     }
+    public function update_headimg($uid,$filename){
+      $sql = "UPDATE user SET u_img = ? where u_id = ?";
+      $this->db->query($sql, array($filename, $uid));
+    }
 }

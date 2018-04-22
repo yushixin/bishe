@@ -9,6 +9,8 @@ import Index          from '@/components/Index'
 import WillDie        from '@/components/WaitPage/WillDie'
 import willvue        from '@/components/WaitPage/willvue'
 import updatapage     from '@/components/updatapage/updatapage'
+import changeHeadimg     from '@/components/updatapage/changeHeadimg'
+
 import NewArticle     from '@/components/Articlepage/NewArticle'
 import ArticleDetails from '@/components/Articlepage/ArticleDetails'
 import ImprovingPetInformation from '@/components/Cat/ImprovingPetInformation'
@@ -79,6 +81,11 @@ export default new Router({
       path: '/imgup',
       name: 'imgup',
       component: imgup
+    },
+    {
+      path: '/changeHeadimg',
+      name: 'changeHeadimg',
+      component:changeHeadimg
     }
     
   ]
