@@ -9,12 +9,16 @@
 			</div>
 		</div>
 		<div class="flex2 changeHeadimg-formdiv">
-			<form name="form1" id="form1">
-				<input type="text" name="uid" :value="uid" readonly="readonly" style="display:none"/>
-	        	<input type="file" name="photo" id="photo">
-	        	<div @click="changeHeadimgSubmit" >提交</div>
-			</form>
-
+			<div>
+				<form name="form1" id="form1">
+					<a href="javascript:;" id="inputfile-css">
+						<input type="file" name="photo" id="photo">点击这里上传图片
+					</a>
+					<input type="text" name="uid" :value="uid" readonly="readonly" style="display:none"/>
+				</form>
+			</div>
+			<p class="showFileName"></p>
+	        <div @click="changeHeadimgSubmit" >提交</div>
 		</div>
  	</div>
 	<common-footer></common-footer>
@@ -89,13 +93,21 @@
 			            this.src = 'http://127.0.0.1/img/TX/mrxianshi.jpg'
 			          }
 			        });
-				}
-
+				},
 
  			},
 			mounted(){
 				this.youcan_or_yot_youcan_this_is_a_question();
 				this.showNowimg();
+				$(".showFileName").html("").hide();
+
+				$("#inputfile-css").on("change","input[type='file']",function(){
+					var filePath=$(this).val();
+					var arr = filePath.split('\\');
+			    	var filename =arr[arr.length-1];
+				    $(".showFileName").html(filename).show();
+
+				});
 
 			}
 		}
@@ -155,5 +167,38 @@
 	.changeHeadimg-formdiv-button{
 /*		width: 50px;
 		height: 50px;*/
+	}
+	#inputfile-css{
+		/*padding: 4px 10px;*/
+	    position: relative;
+	    display: inline-block;
+	    background: #D0EEFF;
+	    border: 1px solid #99D3F5;
+	    border-radius: 4px;
+	    padding: 4px 12px;
+	    overflow: hidden;
+	    color: #1E88C7;
+	    text-decoration: none;
+	    text-indent: 0;
+	    line-height: 40px;
+	}
+	#inputfile-css input{
+	    position: absolute;
+	    font-size: 100px;
+	    right: 0;
+	    top: 0;
+	    opacity: 0;
+	    filter: alpha(opacity=0);
+	    cursor: pointer
+	}
+	#inputfile-css:hover {
+	    color: #444;
+	    background: #eee;
+	    border-color: #ccc;
+	    text-decoration: none
+	}
+	.showFileName{
+		height: 50px;
+		width: 100%;
 	}
 </style>
