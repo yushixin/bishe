@@ -8,17 +8,18 @@
 				<img :src="src" alt="">
 			</div>
 		</div>
-		<div class="flex2 changeHeadimg-formdiv">
-			<div>
+		<div class="flex2 changeHeadimg-formdiv center">
+			<div class="changeHeadimg-formdiv-form">
 				<form name="form1" id="form1">
-					<a href="javascript:;" id="inputfile-css">
+					<a href="javascript:;" id="changeHeadimg-inputfile-css">
 						<input type="file" name="photo" id="photo">点击这里上传图片
 					</a>
 					<input type="text" name="uid" :value="uid" readonly="readonly" style="display:none"/>
 				</form>
 			</div>
-			<p class="showFileName"></p>
-	        <div @click="changeHeadimgSubmit" >提交</div>
+			<p class="showFileName center"></p>
+			<p class="showFileName-zhanwei"></p>
+	        <div class="changeHeadimg-formdiv-submitbutton center" @click="changeHeadimgSubmit" >提交</div>
 		</div>
  	</div>
 	<common-footer></common-footer>
@@ -100,11 +101,14 @@
 				this.youcan_or_yot_youcan_this_is_a_question();
 				this.showNowimg();
 				$(".showFileName").html("").hide();
+				$(".showFileName-zhanwei").html("").show();
 
-				$("#inputfile-css").on("change","input[type='file']",function(){
+
+				$("#changeHeadimg-inputfile-css").on("change","input[type='file']",function(){
 					var filePath=$(this).val();
 					var arr = filePath.split('\\');
 			    	var filename =arr[arr.length-1];
+					$(".showFileName-zhanwei").html("").hide();
 				    $(".showFileName").html(filename).show();
 
 				});
@@ -147,8 +151,12 @@
 	}
 	.changeHeadimg-formdiv{
 		flex: 0.4;	
-	}
 
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 	.flex3{
 		flex: 0.3;
 		width: 100%;
@@ -160,15 +168,21 @@
 	}
 	.flex4{
 		flex: 0.7;
-				width: 100%;
+		width: 100%;
 		height: 100%;
 
 	}
-	.changeHeadimg-formdiv-button{
-/*		width: 50px;
-		height: 50px;*/
+	.changeHeadimg-formdiv-form{
+		width: 100%;
+		flex:1;
 	}
-	#inputfile-css{
+	.changeHeadimg-formdiv-submitbutton{
+		flex: 1;
+	    border-radius: 50px;
+		background: #0ABAB5;
+		width: 50%;
+	}
+	#changeHeadimg-inputfile-css{
 		/*padding: 4px 10px;*/
 	    position: relative;
 	    display: inline-block;
@@ -180,9 +194,9 @@
 	    color: #1E88C7;
 	    text-decoration: none;
 	    text-indent: 0;
-	    line-height: 40px;
+	    /*line-height: 40px;*/
 	}
-	#inputfile-css input{
+	#changeHeadimg-inputfile-css input{
 	    position: absolute;
 	    font-size: 100px;
 	    right: 0;
@@ -191,14 +205,27 @@
 	    filter: alpha(opacity=0);
 	    cursor: pointer
 	}
-	#inputfile-css:hover {
+	#changeHeadimg-inputfile-css:hover {
 	    color: #444;
 	    background: #eee;
 	    border-color: #ccc;
 	    text-decoration: none
 	}
 	.showFileName{
+		flex: 1;
 		height: 50px;
 		width: 100%;
 	}
+	.showFileName-zhanwei{
+		height: 50px;
+		width: 100%;
+		flex: 1;
+
+	}
+	.center{
+		display: flex;
+		justify-content: center;
+		align-items:center;
+	}
+
 </style>
