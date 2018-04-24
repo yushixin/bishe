@@ -27,8 +27,6 @@ class Article extends CI_Controller {
 		$this->load->model('Article_model');
 		$result = $this->Article_model->show_container();
 		echo json_encode($result);
-		// var_dump(json_encode($result));
-		// echo $result;
 	}
 	public function showArticleDetails(){
 		$aid = $this->input->get("aid");

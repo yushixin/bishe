@@ -41,12 +41,6 @@ class User_model extends CI_Model {
       return $query->row();
     }
     public function change_information($uid,$ugender,$uage,$ucatname){
-      // $arr = array(
-      //               'u_id' =>$uid , 
-      //               'u_gender'=>$ugender,
-      //               'u_age'=>$uage,
-      //               'u_catname'=>$ucatname
-      //             );
       $data = array('u_gender' => $ugender, 'u_age' => $uage, 'u_catname' => $ucatname);
       $where = "u_id = $uid";
       $query = $this->db->update('user', $data, $where);
@@ -55,17 +49,9 @@ class User_model extends CI_Model {
     }
     
     public function have_Cat_OR_not($catmaster){
-      // $arr = array(
-      //               'u_id' =>$uid , 
-      //               'u_gender'=>$ugender,
-      //               'u_age'=>$uage,
-      //               'u_catname'=>$ucatname
-      //             );
-      $arr = array(
-            'cat_master'  => $catmaster
-            );
-      $query = $this->db->get_where('cat', $arr);
-      return $query->row();
+      $sql = "select * from cat where cat_master = ?";
+      $query = $this->db->query($sql, array($catmaster));
+      return $query->result();
 
     }
     public function update_headimg($uid,$filename){

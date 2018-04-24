@@ -22,12 +22,23 @@
             <div class="no-cat">
               您还没有完善宠物信息<div class="now-add" @click="toIPetI">立即添加</div>
             </div>
-            <hr>
-  
+            <div class="have-cat">
+              哇！！你居然有猫！！！<div class="now-add" @click="toIPetI">立即添加</div>
+            </div>
         </div>
+        <div class="cat-list">
+            <div class="cat-list-next" v-for="(catdatas,index) in catdata">   
+                <div class="cat-list-next_style cat-list-catname">名字:</br>{{catdatas.cat_name}}</div>
+                <div class="cat-list-next_style cat-list-catage">年龄:</br>{{catdatas.cat_age}}</div>
+                <div class="cat-list-next_style cat-list-catvarieties">品种:</br>{{catdatas.cat_varieties}}</div>
+                <div class="cat-list-next_style cat-list-select">
+                      <div class="cat-list-select-updata" :data-catid="catdatas.cat_id" @click="catUpdata(index)">修改</div>
+                      <div class="cat-list-select-delete" :data-catid="catdatas.cat_id" @click="catDelete(index)">删除</div>
+                </div>
 
+            </div>
+       </div>
     </div>
-
   </div>
 </template>
 
@@ -38,7 +49,9 @@ export default {
     data() {
       return {
         data:[],
-        src:''
+        src:'',
+        catdata:[],
+        click:'a'
       }
     },
     methods:{
@@ -50,10 +63,24 @@ export default {
           this.$router.push({path:"/updatapage"});
       },
       toIPetI:function(){
-          this.$router.push({path:"/IPetI"});//跳转到修改宠物信息
+          this.$router.push({path:"/IPetI"});//跳转到添加宠物信息
       },
       tochangeHeadimg:function(){
           this.$router.push({path:"/changeHeadimg"});
+      },
+      catUpdata:function(index){
+          console.log(index);
+          var catid = catdata[index].cat_id;
+      },
+      catDelete:function(index){
+        var catid = this.catdata[index].cat_id;
+        Axios.get('http://localhost:3000/catDelete',{//showInformation 输出信息
+          params:{
+            catid:catid
+          }
+        }).then((res)=>{
+        });
+        this.$router.push({path:"/PersonalCenter"});
 
       }
     },
@@ -82,21 +109,23 @@ export default {
             value:value
           }
         }).then((res)=>{
-          var value3=JSON.parse(res.data);
-          if(value3){
-            console.log(value3);
-          }else if(value3 == null){
-            console.log("b");
-          }
-          // this.data = value2;
-        });
+            var catdata = JSON.parse(res.data);
+            if(catdata.length > 0){
+              $(".no-cat").addClass("displaynone");
+              $(".have-cat").removeClass("displaynone");
+              this.catdata = catdata;
+            }else if(catdata.length == 0){
+              $(".no-cat").removeClass("displaynone");
+              $(".have-cat").addClass("displaynone");
+            }
+          });
     }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  @import "../assets/css/reset.css";
+<style>
+  /*@import "../assets/css/reset.css";*/
 
     .PersonalNext{
       position: fixed;
@@ -224,10 +253,79 @@ export default {
       font-size: 0.4rem;
       line-height: 1rem;
     }
+    .have-cat{
+      width: 100%;
+      height: 1rem;
+      font-size: 0.4rem;
+      line-height: 1rem;
+    }
     .now-add{
       display: inline;
       border-style: solid;
       border-width: 1px;
       border-color: block;
     }
+    .displaynone{
+      display: none;
+    }
+
+
+    /*catlist样式*/
+    .cat-list{
+      width: 100%;
+      font-size: 0.3rem;
+      position: absolute;
+      top: 220px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cat-list-next{
+      width: 100%;
+      height: 1rem;
+      margin-top: 10px; 
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+    .cat-list-next_style{
+      flex : 1;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #D3D3D3;
+    }
+    .cat-list-catname{
+    }
+    .cat-list-catage{
+      border-left:1px solid #D3D3D3;
+    }
+    .cat-list-catvarieties{
+      border-left:1px solid #D3D3D3;
+    }
+    .cat-list-select{
+      flex:0.5;
+      display: flex;
+      flex-direction: column;
+    }
+    .cat-list-select div{
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: 0.3rem;
+      border-radius:25px;
+    }
+    .cat-list-select-updata{
+      background: #FF3333;
+    }
+    .cat-list-select-delete{
+      background: #3299cc;
+    }
+
 </style>

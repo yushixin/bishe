@@ -20,4 +20,10 @@ class Cat extends CI_Controller {
 		$result=$this->Cat_model->insert_pet_inf($catName,$varieties,$uid,$catAge);
 		echo $result;
 	}
+	public function catDelete(){
+        $catid=$this->input->post("catid");
+        $this->load->model('Cat_model');
+        $result=$this->Cat_model->cat_delete($catid);
+		// echo $result;
+	}
 }

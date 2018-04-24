@@ -99,16 +99,9 @@ router.get('/showArticleDetails',function(req,res,next){
 })
 router.get('/haveCatORnot',function(req,res,next){
     var catmaster = req.query.value;
-    console.log("***111");
     console.log(catmaster);
-    console.log("***111");
-
     request.get('http://127.0.0.1/bishegogogo/CI/user/haveCatORnot?catmaster='+catmaster,function(error,response,body){
-        console.log("***222");
-        
         console.log(body);
-        console.log("***222");
-
         res.json(body);
     })
 })
@@ -127,6 +120,13 @@ router.get('/CreatePetInf',function(req,res,next){
         }
     });
 })
-
+router.get('/catDelete',function(req,res,next){
+    var catid = req.query.catid;
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/Cat/catDelete',form:{catid:catid}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            res.json(body);
+        }
+    });
+})
 
 module.exports = router;

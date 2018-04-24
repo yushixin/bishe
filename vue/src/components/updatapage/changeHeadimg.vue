@@ -91,7 +91,7 @@
 			          if(this.data.u_img){
 			            this.src = 'http://127.0.0.1/img/TX/' + this.data.u_img;
 			          }else if(this.data.u_img == null){
-			            this.src = 'http://127.0.0.1/img/TX/mrxianshi.jpg'
+			            this.src = 'http://127.0.0.1/img/TX/mrxianshi.jpg';
 			          }
 			        });
 				},

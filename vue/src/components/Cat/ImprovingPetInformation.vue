@@ -5,7 +5,7 @@
 			<div class="cat-name">
 				<div>名字</div>
 				<div>
-					<input type="text" class="form-control" id="form-control1"placeholder="请输入patname" aria-describedby="basic-addon1">
+					<input type="text" class="form-control" id="form-control1" placeholder="请输入patname" aria-describedby="basic-addon1">
 				</div>
 			</div>
 			<div class="cat-age">
