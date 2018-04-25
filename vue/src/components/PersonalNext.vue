@@ -74,14 +74,17 @@ export default {
       },
       catDelete:function(index){
         var catid = this.catdata[index].cat_id;
+        
         Axios.get('http://localhost:3000/catDelete',{//showInformation 输出信息
           params:{
             catid:catid
           }
         }).then((res)=>{
+            // console.log(res.data);
+          var value=JSON.parse(res.data);
+              console.log(value);
         });
-        this.$router.push({path:"/PersonalCenter"});
-
+        
       }
     },
     mounted() {

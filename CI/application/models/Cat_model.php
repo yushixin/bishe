@@ -17,7 +17,7 @@ class Cat_model extends CI_Model {
     public function cat_delete($catid){
         $sql = "delete from cat where cat_id = ?";
         $query = $this->db->query($sql, array($catid));
-        // return $query->result();
+        return $query->now_row();
     }
 
     

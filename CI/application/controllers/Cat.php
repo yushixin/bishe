@@ -24,6 +24,6 @@ class Cat extends CI_Controller {
         $catid=$this->input->post("catid");
         $this->load->model('Cat_model');
         $result=$this->Cat_model->cat_delete($catid);
-		// echo $result;
+        echo json_encode($result);
 	}
 }
